@@ -10,12 +10,19 @@ This project was just meant for university and does not generate any money and i
 ## Features
 
 ### Getting flight data
-Leveraging an online platform that provides live arrival and departure information for any airport, I utilized the requests library to retrieve the website's HTML data. Following this, I employed the BeautifulSoup library to extract the URLs of the flights, enabling me to access the flight arrival and departure times.
+- Arrivals and Departures: Using requests to retrieve HTML from an online platform (airports-worldwide.info), the code parses real-time flight information with BeautifulSoup.
+  
+- Flight Information: Departure and arrival times, flight numbers, airline codes, and statuses are extracted and stored as structured data in a database.
 
 ### Finding valid flight paths
+- Algorithmic approach: Traveling Salesman Algorithm ensures that all same-day flights are considered, connecting multiple airports and carriers if necessary.
 
-Flight arrival and departure times then get placed into a database that uses a Traveling Salesman Algorithm to find valid flight paths.
+- No preference: The algorithm doesn’t prioritize cost or airline preference but purely focuses on feasibility. This way a passenger can feasibly hop from flight to flight to get to their destination within the same day.
 
-### Getting tickets for the flights
-We use the Selenium library on Kayak.com to obtain flight tickets for the routes returned by the algorithm. By employing various techniques to simulate human behavior to fool the site protections, the ticket linksfor airlines that have flights matching the previously retrieved flight numbers are extracted. These links are then passed to the Front-End.
+### Getting tickets
+- Kayak scraping with Selenium: The Selenium library is used on Kayak.com to obtain flight tickets for the flights returned by the algorithm.
+
+- Anti-Bot Measures: Random user agents, wait times, and browser configurations are used to mimic real user behavior.
+
+- Ticket links: Direct URLs are extracted to airline booking sites which the front-end can present to the user.
 
